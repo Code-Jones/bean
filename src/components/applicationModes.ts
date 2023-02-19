@@ -22,7 +22,7 @@ export const getAppModeDisplayName = (mode: ApplicationMode): string => {
     case APPLICATION_MODE.WAVE_FORM:
       return "wave";
     case APPLICATION_MODE.NOISE:
-      return "🔇mute";
+      return "🔇Mute";
     case APPLICATION_MODE.AUDIO:
       return "🎧 audio";
     default:
@@ -33,7 +33,7 @@ export const getAppModeDisplayName = (mode: ApplicationMode): string => {
 export const getAudioDisplayName = (mode: AudioMode): string => {
   switch (mode) {
     case AUDIO_MODE.MUTE:
-      return "🔇mute";
+      return "🔇Mute";
     case AUDIO_MODE.EP1:
       return "🎧 EP1: Welcome to the beancast";
     case AUDIO_MODE.EP2:

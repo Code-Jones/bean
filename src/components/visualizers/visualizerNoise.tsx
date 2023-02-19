@@ -35,7 +35,7 @@ const NoiseVisual = ({ visual }: NoiseVisualizerProps): JSX.Element => {
         max: 16,
         step: 1,
       },
-    }),
+    }, { collapsed: true}),
   });
 
   const coordinateMapper = new CoordinateMapper_Noise(

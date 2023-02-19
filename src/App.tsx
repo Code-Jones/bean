@@ -1,11 +1,10 @@
 import "./App.css";
 import { Suspense } from "react";
-import { useControls } from "leva";
+import { useControls} from "leva";
 import {
   ApplicationMode,
   APPLICATION_MODE,
   AudioMode,
-  getAppModeDisplayName,
   getAudioModes,
   getAudioDisplayName,
   getPlatformSupportedApplicationModes,
@@ -27,30 +26,33 @@ const AUDIO_MODES = getAudioModes();
 
 
 const App = (): JSX.Element => {
+
+  const modeParam = new URLSearchParams(document.location.search).get(
+    "ep"
+  ) as AudioMode | null;
+
   const { Play } = useControls({
     Play: {
-      value: AUDIO_MODES[0],
+      value: modeParam ?? AUDIO_MODES[0],
       options: AUDIO_MODES.reduce((o, mode) => ({ ...o, [getAudioDisplayName(mode)]: mode }), {}),
       order: -100
     }
   });
 
-  let { mode } = useControls({
-    mode: {
-      value: AVAILABLE_MODES[1],
-      options: AVAILABLE_MODES.reduce(
-        (o, mode) => ({ ...o, [getAppModeDisplayName(mode)]: mode }),
-        {}
-      ),
-      order: -100,
-    },
-  });
+
+  // let { mode } = useControls({
+  //   mode: {
+  //     value: AVAILABLE_MODES[1],
+  //     options: AVAILABLE_MODES.reduce(
+  //       (o, mode) => ({ ...o, [getAppModeDisplayName(mode)]: mode }),
+  //       {}
+  //     ),
+  //     order: -100,
+  //   },
+  // });
   
 
-  mode = Play !== 'MUTE' ? APPLICATION_MODE.AUDIO : APPLICATION_MODE.NOISE;
-
-
- 
+  const mode = Play !== 'MUTE' ? APPLICATION_MODE.AUDIO : APPLICATION_MODE.NOISE;
 
   return (
     <Suspense fallback={<span>loading...</span>}>

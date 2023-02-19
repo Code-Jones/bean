@@ -49,7 +49,6 @@ export const Instructions = styled('div', {
   padding: '$rowGap $md',
 })
 
-
 export const Remove = styled('div', {
   $flexLeft: '',
   top: '0',

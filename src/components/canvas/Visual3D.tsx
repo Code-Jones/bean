@@ -1,10 +1,9 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useControls } from "leva";
+import { useControls, button } from "leva";
 import { ApplicationMode, APPLICATION_MODE } from "../applicationModes";
 import AudioVisual from "../visualizers/visualizerAudio";
 import NoiseVisual from "../visualizers/visualizerNoise";
-import ParticleNoiseVisual from "../visualizers/visualizerParticleNoise";
 import WaveformVisual from "../visualizers/visualizerWaveform";
 
 const getVisualizerComponent = (
@@ -47,6 +46,12 @@ const Visual3DCanvas = ({ mode }: Visual3DCanvasProps): JSX.Element => {
       options: AVAILABLE_VISUALS,
     },
   });
+
+  
+  useControls({
+    Patreon: button(() => window.open('https://www.codejones.me', '_blank')),
+    Spotify: button(() => window.open('https://www.codejones.me', '_blank'))
+  })
   const backgroundColor = "#010204";
   return (
     <Canvas

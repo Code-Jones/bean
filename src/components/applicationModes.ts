@@ -6,7 +6,11 @@ export const APPLICATION_MODE = {
 
 export const AUDIO_MODE = {
   MUTE: "MUTE",
-  AUDIO: "AUDIO"
+  EP1: "EP1",
+  EP2: "EP2",
+  EP3: "EP3",
+  EP4: "EP4",
+  EP5: "EP5"
 } as const;
 
 type ObjectValues<T> = T[keyof T];
@@ -30,8 +34,16 @@ export const getAudioDisplayName = (mode: AudioMode): string => {
   switch (mode) {
     case AUDIO_MODE.MUTE:
       return "🔇mute";
-   case AUDIO_MODE.AUDIO:
-      return "🎧 audio";
+    case AUDIO_MODE.EP1:
+      return "🎧 EP1: Welcome to the beancast";
+    case AUDIO_MODE.EP2:
+      return "🎧 EP2: We are depressed";
+    case AUDIO_MODE.EP3:
+      return "🎧 EP3: Losing the plot";
+    case AUDIO_MODE.EP4:
+      return "🎧 EP4: Economics";
+    case AUDIO_MODE.EP5:
+      return "🎧 EP5: Constipated";
     default:
       throw new Error(`Unknown mode ${mode}`);
   }
@@ -47,7 +59,11 @@ export const getPlatformSupportedApplicationModes = (): ApplicationMode[] => {
 
 export const getAudioModes = (): AudioMode[] => {
   return [
-    AUDIO_MODE.AUDIO,
-    AUDIO_MODE.MUTE
+    AUDIO_MODE.MUTE,
+    AUDIO_MODE.EP1,
+    AUDIO_MODE.EP2,
+    AUDIO_MODE.EP3,
+    AUDIO_MODE.EP4,
+    AUDIO_MODE.EP5
   ]
 }

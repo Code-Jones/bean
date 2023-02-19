@@ -2,7 +2,6 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useControls } from "leva";
 import { ApplicationMode, APPLICATION_MODE } from "../applicationModes";
-import { readJson } from "../epMapper";
 import AudioVisual from "../visualizers/visualizerAudio";
 import NoiseVisual from "../visualizers/visualizerNoise";
 import ParticleNoiseVisual from "../visualizers/visualizerParticleNoise";
@@ -16,11 +15,7 @@ const getVisualizerComponent = (
     case APPLICATION_MODE.WAVE_FORM:
       return <WaveformVisual visual={visual} />;
     case APPLICATION_MODE.NOISE:
-      return visual === "particleSwarm" ? (
-        <ParticleNoiseVisual />
-      ) : (
-        <NoiseVisual visual={visual} />
-      );
+        return <NoiseVisual visual={visual} />;
     case APPLICATION_MODE.AUDIO:
       return <AudioVisual visual={visual} />;
     default:
@@ -35,15 +30,12 @@ const AVAILABLE_VISUALS = [
   "sphere",
   "cube",
   "diffusedRing",
-  "pinGrid",
-  // "particleSwarm",
+  "pinGrid"
 ];
 const Visual3DCanvas = ({ mode }: Visual3DCanvasProps): JSX.Element => {
   const visualizerParam = new URLSearchParams(document.location.search).get(
     "visual"
   ) as string;
-
-  readJson();
 
 
   const { visualizer } = useControls({
@@ -70,7 +62,6 @@ const Visual3DCanvas = ({ mode }: Visual3DCanvasProps): JSX.Element => {
       <ambientLight />
       <fog attach="fog" args={[backgroundColor, 0, 100]} />
       {getVisualizerComponent(mode as ApplicationMode, visualizer)}
-      {/* <Stats /> */}
       <OrbitControls makeDefault />
     </Canvas>
   );

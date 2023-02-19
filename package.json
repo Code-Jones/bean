@@ -1,12 +1,14 @@
 {
   "name": "bean-cast",
-  "homepage": "",
   "version": "0.1.0",
+  "homepage": "https://code-jones.github.io/bean/",
   "private": true,
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@react-three/drei": "^9.37.1",

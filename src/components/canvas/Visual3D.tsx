@@ -49,8 +49,9 @@ const Visual3DCanvas = ({ mode }: Visual3DCanvasProps): JSX.Element => {
 
   
   useControls({
-    Patreon: button(() => window.open('https://www.codejones.me', '_blank')),
-    Spotify: button(() => window.open('https://www.codejones.me', '_blank'))
+    Patreon: button(() => window.open('https://www.patreon.com/user/creators?u=89147012', '_blank')),
+    Spotify: button(() => window.open('https://www.codejones.me', '_blank')),
+    YouTube: button(() => window.open('https://www.youtube.com/channel/UCe-uK-bl3Y1sGFtWZI7rYPQ', '_blank'))
   })
   const backgroundColor = "#010204";
   return (
